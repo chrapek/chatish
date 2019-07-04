@@ -4,10 +4,10 @@ import { List } from '@material-ui/core';
 import './chatHistory.scss';
 import Header from './components/Header/Header';
 
-const ChatHistory = ({messages}) => {
+const ChatHistory = ({messages, activeChannel}) => {
     return (
         <div className="chat" data-testid="chat-history">
-            <Header/>
+            <Header activeChannel={activeChannel}/>
 
             <List cols={2}>
                 {messages.map(msg => (

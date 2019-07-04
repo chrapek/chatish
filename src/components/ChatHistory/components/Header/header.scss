@@ -1,4 +1,7 @@
 .chat__header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     background-color: #f7f7f7;
     padding: 10px;
     margin-bottom: 10px;

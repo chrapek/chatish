@@ -9,13 +9,13 @@ const InputMessage = ({handleMessageSend}) => {
         const {value} = e.target;
 
         setValue(value);
-    }
+    };
 
     const handleSubmit = () => {
-        handleMessageSend(value)
+        handleMessageSend(value);
 
         setValue('');
-    }
+    };
 
     return (
         <div className="input-message" data-testid="input-message">

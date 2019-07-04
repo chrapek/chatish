@@ -4,9 +4,8 @@ import ChatHistory from '../ChatHistory/ChatHistory';
 import PubNub from 'pubnub';
 import normalizeHistoryMessages from '../../normalizers/normalizeHistoryMessages';
 
-const Chat = () => {
+const Chat = ({ match: { params: { channel }} }) => {
     const [messages, setMessages] = useState([]);
-    const [activeChannel] = useState('generalTest');
     const messageCallbackRef = useRef();
 
     const pubnub = new PubNub({
@@ -18,19 +17,19 @@ const Chat = () => {
         pubnub.addListener({
             message: (msg) => messageCallbackRef.current(msg)
         });
-        
+
         pubnub.subscribe({
-            channels: [activeChannel] 
+            channels: [channel]
         });
 
         pubnub.history({
-            channel: activeChannel
+            channel: channel
         }, (status, response) => {
             const historyMessages = normalizeHistoryMessages(response.messages);
             setMessages(messages => [...messages, ...historyMessages]);
-        })    
+        })
 
-    }, [activeChannel]);
+    }, []);
 
     useEffect(() => {
         messageCallbackRef.current = (msg) => {
@@ -40,7 +39,7 @@ const Chat = () => {
 
     const handleMessageSend = (message) => {
         pubnub.publish({
-            channel: activeChannel,
+            channel: channel,
             message: {
                 user: {
                     name: 'User1'
@@ -52,7 +51,7 @@ const Chat = () => {
 
     const deleteMessages = () => {
         pubnub.deleteMessages({
-            channel: activeChannel
+            channel: channel
         });
 
         setMessages([]);
@@ -61,7 +60,7 @@ const Chat = () => {
     return (
         <div data-testid="chat">
             <button onClick={deleteMessages}>Clear</button>
-            <ChatHistory messages={messages}/>
+            <ChatHistory messages={messages} activeChannel={channel}/>
             <InputMessage handleMessageSend={handleMessageSend}/>
         </div>
     )
