@@ -4,6 +4,7 @@ import Chat from './components/Chat/Chat';
 import { Container } from '@material-ui/core';
 import {Route, Router, Switch} from 'react-router-dom';
 import history from "./history";
+import SelectUsername from "./components/SelectUsername/SelectUsername";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Container>
           <Router history={history}>
               <Switch>
+                  <Route exact path="/" component={SelectUsername} />
                   <Route exact path="/:channel" component={Chat} />
               </Switch>
           </Router>

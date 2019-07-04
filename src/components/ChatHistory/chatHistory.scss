@@ -1,4 +1,15 @@
-
 .chat {
-    background-color: #ccc;
- }
+  background-color: #ccc;
+
+  &__list {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+      &:first-child {
+        margin-top: auto;
+      }
+    }
+  }
+}

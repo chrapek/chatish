@@ -1,0 +1,25 @@
+.select-username {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__label {
+    color: white;
+  }
+
+  &__paper {
+    padding-right: 10px;
+    &__input {
+      margin: 10px 20px;
+      width: 200px;
+    }
+
+    &__button {
+      padding: 20px 10px;
+      border-radius: 0;
+      margin-left: auto;
+    }
+  }
+}

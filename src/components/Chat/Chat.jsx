@@ -26,7 +26,7 @@ const Chat = ({ match: { params: { channel }} }) => {
             channel: channel
         }, (status, response) => {
             const historyMessages = normalizeHistoryMessages(response.messages);
-            setMessages(messages => [...messages, ...historyMessages]);
+            setMessages([...messages, ...historyMessages]);
         })
 
     }, []);
@@ -35,14 +35,21 @@ const Chat = ({ match: { params: { channel }} }) => {
         messageCallbackRef.current = (msg) => {
             setMessages([...messages, {content: msg.message, timetoken: msg.timetoken}]);
         }
-    }, [messages])
+
+        window.scrollTo(0, document.body.scrollHeight);
+    }, [messages]);
 
     const handleMessageSend = (message) => {
+
+        if (message === '') {
+            return
+        }
+
         pubnub.publish({
             channel: channel,
             message: {
                 user: {
-                    name: 'User1'
+                    name: localStorage.username
                 },
                 message
             }

@@ -9,9 +9,9 @@ const ChatHistory = ({messages, activeChannel}) => {
         <div className="chat" data-testid="chat-history">
             <Header activeChannel={activeChannel}/>
 
-            <List cols={2}>
+            <List cols={2} className="chat__list">
                 {messages.map(msg => (
-                    <Message 
+                    <Message
                         key={msg.timetoken} 
                         username={msg.content.user.name} 
                         message={msg.content.message}

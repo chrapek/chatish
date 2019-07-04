@@ -3,7 +3,7 @@ import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@material-ui/cor
 
 const Message = ({username, avatar, message}) => {
     return (
-        <ListItem data-testid="message">
+        <ListItem data-testid="message" className="chat__list__item">
             <ListItemAvatar>
                 <Avatar alt={`${username} avatar`} src={avatar}/>
             </ListItemAvatar>

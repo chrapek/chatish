@@ -1,4 +1,4 @@
-import {render, within, cleanup, act} from '@testing-library/react';
+import {render, within, cleanup} from '@testing-library/react';
 import React from 'react';
 import Chat from './Chat';
 import {MemoryRouter, Route} from "react-router-dom";

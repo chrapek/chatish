@@ -17,6 +17,12 @@ const InputMessage = ({handleMessageSend}) => {
         setValue('');
     };
 
+    const handleOnEnter = (e) => {
+        if (e.key === "Enter") {
+            handleSubmit();
+        }
+    };
+
     return (
         <div className="input-message" data-testid="input-message">
             <InputBase 
@@ -25,6 +31,7 @@ const InputMessage = ({handleMessageSend}) => {
                 fullWidth 
                 className="input-message__input"
                 placeholder="Write a message!"
+                onKeyDown={handleOnEnter}
             />
             <Button 
                 variant="contained" 
