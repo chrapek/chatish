@@ -4,39 +4,18 @@ import { List } from '@material-ui/core';
 import './chatHistory.scss';
 import Header from './components/Header/Header';
 
-const messages = [
-    {
-        user: {
-            name: 'User1'
-        },
-        content: 'Lorem ipsum dolor sit ament'
-    },
-    {
-        user: {
-            name: 'User2',
-        },
-        content: 'Lraksnqut jsuejgk i uydjfl'
-    },
-    {
-        user: {
-            name: 'User3',
-        },
-        content: 'Lorem 25jd8dkdj asl'
-    }
-]
-
-const ChatHistory = () => {
+const ChatHistory = ({messages}) => {
     return (
         <div className="chat" data-testid="chat-history">
             <Header/>
 
             <List cols={2}>
-                {messages.map((message, index) => (
+                {messages.map(msg => (
                     <Message 
-                        key={index} 
-                        username={message.user.name} 
-                        message={message.content}
-                        avatar={`https://avatars.dicebear.com/v2/male/${message.user.name}.svg?options[mood][]=happy`}
+                        key={msg.timetoken} 
+                        username={msg.content.user.name} 
+                        message={msg.content.message}
+                        avatar={`https://avatars.dicebear.com/v2/male/${msg.content.user.name}.svg?options[mood][]=happy`}
                     />
                 ))}
             </List>
