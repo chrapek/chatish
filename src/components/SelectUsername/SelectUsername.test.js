@@ -16,13 +16,14 @@ describe("Select Username", () => {
         const {getByPlaceholderText} = setup();
 
         expect(getByPlaceholderText('What is your username?').value).toBe("");
-    })
+    });
 
     test('It should render send button', () => {
         const {getByText} = setup();
 
         expect(getByText(/Join/)).toBeInTheDocument();
     });
+
     test('It properly changes value of the input', () => {
         const {getByPlaceholderText} = setup();
         const input = getByPlaceholderText('What is your username?');
@@ -33,5 +34,5 @@ describe("Select Username", () => {
 
         expect(input.value).toBe("changed");
     })
-})
+});
 

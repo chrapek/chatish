@@ -7,7 +7,7 @@ const setup = () => {
     const input = utils.getAllByTestId('input-message');
 
     return {input, ...utils}
-}
+};
 
 afterEach(cleanup); 
 
@@ -16,7 +16,7 @@ describe("Input Message", () => {
         const {getByPlaceholderText} = setup();
 
         expect(getByPlaceholderText('Write a message!').value).toBe("");
-    })
+    });
 
     test('It should render send button', () => {
         const {getByText} = setup();
@@ -34,7 +34,7 @@ describe("Input Message", () => {
 
         expect(input.value).toBe("changed value");
     })
-})
+});
 
 
 

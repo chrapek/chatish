@@ -1,4 +1,4 @@
-import {render, within, cleanup} from '@testing-library/react';
+import {render, within, cleanup, fireEvent} from '@testing-library/react';
 import React from 'react';
 import Chat from './Chat';
 import {MemoryRouter, Route} from "react-router-dom";
@@ -20,14 +20,14 @@ afterEach(cleanup);
 
 describe("Chat", () => {
     test('It should render Input Message', () => {
-        const {chat} = setup()
+        const {chat} = setup();
         const inputMessage = within(chat).getByTestId('input-message');
         
         expect(inputMessage).toBeInTheDocument();
-    })
+    });
     
     test('It should render Message Container', () => {
-        const {chat} =  setup()
+        const {chat} =  setup();
         
         const chatHistory = within(chat).getByTestId('chat-history');
         expect(chatHistory).toBeInTheDocument();

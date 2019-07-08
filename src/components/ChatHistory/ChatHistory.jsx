@@ -10,14 +10,15 @@ const ChatHistory = ({messages, activeChannel}) => {
             <Header activeChannel={activeChannel}/>
 
             <List cols={2} className="chat__list">
-                {messages.map(msg => (
-                    <Message
-                        key={msg.timetoken} 
-                        username={msg.content.user.name} 
+                {messages.map(msg => {
+                    const user = msg.content.user;
+                    return <Message
+                        key={msg.timetoken}
+                        username={user ? user.name : ''}
                         message={msg.content.message}
-                        avatar={`https://avatars.dicebear.com/v2/male/${msg.content.user.name}.svg?options[mood][]=happy`}
+                        avatar={`https://avatars.dicebear.com/v2/male/${user ? user.name : ''}.svg?options[mood][]=happy`}
                     />
-                ))}
+                })}
             </List>
         </div>
     )
